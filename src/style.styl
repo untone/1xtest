@@ -1,0 +1,308 @@
+$background = #e9f4f8
+$border = #e5e5e5
+$alt = #666
+$up = #fd0000
+$down = #29c202
+$accent = #00b2fd
+$white = #fff
+$button = #ececec
+$disabled = #c6c6c6
+
+$wrap
+  margin 0 auto
+  width 1020px
+  height 100%
+
+$fonts
+  font-family -apple-system,
+              BlinkMacSystemFont,
+              'Segoe UI',
+              Roboto,
+              Oxygen-Sans,
+              Ubuntu,
+              Cantarell,
+              'Helvetica Neue',
+              sans-serif
+
+:global
+  html,
+  body
+    margin 0
+    min-height 100vh
+
+  body
+    padding 30px 0 100px
+    font-family -apple-system,
+                BlinkMacSystemFont,
+                'Segoe UI',
+                Roboto,
+                Oxygen-Sans,
+                Ubuntu,
+                Cantarell,
+                'Helvetica Neue',
+                sans-serif
+
+.main
+  @extend $wrap
+  padding 0 0 100px 0
+
+.header
+  position fixed
+  z-index 10
+  top 0
+  right 0
+  left 0
+  height 30px
+  font-size 12px
+  background-color $background
+
+  &__wrap
+    @extend $wrap
+    display flex
+    align-items center
+    justify-content space-between
+
+  &__button
+    margin-left 10px
+
+.goods
+
+  &__header
+    margin 0
+    padding 50px 0 30px
+    font-size 18px
+
+  &__article
+    display flex
+
+  &__section
+    position relative
+    z-index 1
+    box-sizing border-box
+    margin 0
+    padding 20px
+    display flex
+    flex-direction column
+    justify-content space-between
+    width 33.33%
+    height 260px
+    margin 0 -1px 0 0
+    border 1px solid $border
+    transition background-color 2s
+
+    &:hover
+      z-index 1
+      border-color darken($border, 10%)
+
+    &_header
+      margin 0
+      padding 0
+      font-size 18px
+      font-weight normal
+
+    &_footer
+      display flex
+      justify-content space-between
+
+    &_column
+      margin 0
+      padding 0
+      height 100%
+      display flex
+      flex-direction column
+      justify-content space-between
+
+    &_price
+      margin 0
+      padding 0
+      display flex
+      align-items center
+      font-size 16px
+      font-weight 600
+
+      &--up:after
+        content ''
+        width 0
+        height 0
+        margin auto 0 auto 5px
+        border-width 0 4px 5px
+        border-style dashed dashed solid
+        border-color transparent transparent $up
+
+      &--down:after
+        content ''
+        width 0
+        height 0
+        margin auto 0 auto 5px
+        border-width 5px 4px 0
+        border-style solid dashed dashed
+        border-color $down transparent transparent
+
+    &_quantity
+      font-size 12px
+      color $alt
+
+    &_button
+      margin 0
+      padding 0 20px
+      height 40px
+      display flex
+      align-items center
+      justify-content center
+      @extend $fonts
+      font-size 14px
+      font-weight 600
+      text-align center
+      color $white
+      appearance none
+      background-color $accent
+      transition background-color .15s
+      border none
+      border-radius 2px
+      cursor pointer
+
+      &:hover,
+      &:focus
+        background-color darken($accent, 5%)
+
+      &[disabled]
+        border 1px solid lighten($alt, 50%)
+        color $alt
+        background-color $white
+        cursor default
+
+.basket
+  position fixed
+  z-index 10
+  right 0
+  bottom 0
+  left 0
+
+  &--expanded
+    height auto
+
+  &__wrap
+    @extend $wrap
+    justify-content space-between
+
+  &__header
+    margin 0
+    padding 0 20px
+    display flex
+    align-items center
+    justify-content space-between
+    height 60px
+    font-size 18px
+    color $white
+    background-color $accent
+    transition background-color .25s
+
+  &__body
+    overflow hidden
+    margin 0
+    padding 0
+    background-color lighten($accent, 90%)
+
+  &__item
+    margin 0
+    padding 10px 20px
+    display flex
+    justify-content space-between
+    min-height 30px
+
+    &_name
+      margin 0
+      height 0
+      min-height 30px
+      display flex
+      align-items center
+      flex-grow 1
+      font-size 14px
+      font-weight normal
+
+    &_quantity
+      display flex
+      flex-direction column
+      flex-basis 200px
+      align-items center
+
+    &_form
+      display flex
+      margin auto 0
+      width 100%
+      align-items center
+      width 120px
+      height 30px
+
+      &_minus
+      &_plus
+        box-sizing border-box
+        margin 0
+        padding 0
+        width 30px
+        height 30px
+        line-height 30px
+        @extend $fonts
+        font-size 14px
+        font-weight 600
+        appearance none
+        border none
+        outline none
+        background $button
+        cursor pointer
+
+        &[disabled]
+          color $disabled
+          cursor default
+
+      &_input
+        box-sizing border-box
+        margin 0 -1px
+        padding 0
+        width 60px
+        height 30px
+        text-align center
+        @extend $fonts
+        border 1px solid $button
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button
+          appearance none
+          display none
+          outline none
+
+      &_warning
+        margin 5px 0 0
+        font-size 12px
+        color $up
+
+
+    &_price
+      min-width 120px
+      min-height 30px
+      display flex
+      line-height 30px
+      font-size 16px
+      font-weight 600
+      text-align center
+
+    &_delete
+      box-sizing border-box
+      margin 0
+      width 30px
+      height 30px
+      text-align center
+      @extend $fonts
+      font-size 20px
+      appearance none
+      color $up
+      border 1px solid $up
+      border-radius 2px
+      transition color .15s, border-color .15s
+      outline none
+      cursor pointer
+
+      &:hover,
+      &:focus
+        color lighten($up, 10%)
+        border-color lighten($up, 10%)
