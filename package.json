@@ -22,7 +22,8 @@
     "stylus": "^0.54.5"
   },
   "scripts": {
-    "build": "NODE_ENV=production parcel build src/index.html",
+    "build": "NODE_ENV=production parcel build src/index.html --public-url ./",
+    "serve": "NODE_ENV=production parcel serve src/index.html",
     "dev": "NODE_ENV=development parcel src/index.html"
   }
 }
